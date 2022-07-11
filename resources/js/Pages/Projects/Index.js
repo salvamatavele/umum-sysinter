@@ -48,7 +48,6 @@ export default function Projects(props) {
     const created_at = new Date(tcc.created_at)
     const updated_at = new Date(tcc.updated_at)
     const [alignment, setAlignment] = useState(tcc?.status ? '1' : '0');
-
     const { data, setData, post, processing, errors } = useForm({
         user_id: project?.user_id || auth.user.id,
         title: project?.title || '',
@@ -86,6 +85,8 @@ export default function Projects(props) {
                 preserveState: true
             });
         }
+        setAlignment(tcc?.status ? '1' : '0')
+
     }
 
     function confirmDelete(id) {
