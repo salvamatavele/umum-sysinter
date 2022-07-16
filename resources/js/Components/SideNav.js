@@ -59,6 +59,14 @@ export const secondaryListItems = (
         <ListSubheader component="div" inset>
             Actividades
         </ListSubheader>
+        <Tooltip title="Cronogramas" placement="right">
+            <ListItemButton LinkComponent='a' href={route('timelines.index')}>
+                <ListItemIcon>
+                    <CalendarMonth />
+                </ListItemIcon>
+                <ListItemText primary="Cronogramas" />
+            </ListItemButton>
+        </Tooltip>
         <Tooltip title="Calendários" placement="right">
             <ListItemButton LinkComponent='a' href={route('calendars.index')}>
                 <ListItemIcon>

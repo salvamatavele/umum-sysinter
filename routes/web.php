@@ -7,6 +7,7 @@ use App\Http\Controllers\ProjectCommentController;
 use App\Http\Controllers\ProjectsConroller;
 use App\Http\Controllers\SchedulesController;
 use App\Http\Controllers\SupervisionsController;
+use App\Http\Controllers\TimelinesController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Redirect;
@@ -50,6 +51,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     /**project comment */
     Route::post('comments', [ProjectCommentController::class, 'store'])->name('projects.comment');
     Route::delete('comments/{id}', [ProjectCommentController::class, 'destroy'])->name('comments.destroy');
+    /**timelines */
+    Route::get('timelines', [TimelinesController::class, 'index'])->name('timelines.index');
+    Route::get('timelines/create', [TimelinesController::class, 'create'])->name('timelines.create');
+    Route::post('timelines', [TimelinesController::class, 'store'])->name('timelines.store');
+    Route::delete('timelines/{id}', [TimelinesController::class, 'destroy'])->name('timelines.destroy');
+
     /**calendar */
     Route::get('calendars', [CalendarsController::class, 'index'])->name('calendars.index');
     Route::post('calendars', [CalendarsController::class, 'store'])->name('calendars.store');
