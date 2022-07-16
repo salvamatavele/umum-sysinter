@@ -17,7 +17,7 @@ class TimelinesController extends Controller
 
         return Inertia::render('Timelines/Index', [
             'timelines' => Timeline::where('user_id', auth()->user()->id)->orWhere('user_id', $query)->get(),
-            'users' => auth()->user()->admin === 2 ? User::find(auth()->user()->id)->load('supervisor.student') : User::where('type','estudante'),
+            'users' => auth()->user()->admin === 2 ? User::find(auth()->user()->id)->load('supervisor.student') : User::where('type','estudante')->get(),
         ]);
     }
 
