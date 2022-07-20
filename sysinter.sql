@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 10, 2022 at 03:14 PM
--- Server version: 10.8.3-MariaDB
--- PHP Version: 8.1.8
+-- Generation Time: Jul 16, 2022 at 02:18 PM
+-- Server version: 10.7.3-MariaDB
+-- PHP Version: 8.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -135,7 +135,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (9, '2022_06_22_190852_create_projects_table', 3),
 (10, '2022_06_30_065546_create_project_comments_table', 4),
 (12, '2022_07_09_100029_create_calendars_table', 5),
-(13, '2022_07_09_151032_create_schedules_table', 6);
+(13, '2022_07_09_151032_create_schedules_table', 6),
+(14, '2022_07_16_084128_create_timelines_table', 7);
 
 -- --------------------------------------------------------
 
@@ -291,6 +292,29 @@ INSERT INTO `supervisions` (`id`, `supervisor_id`, `student_id`, `created_at`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `timelines`
+--
+
+CREATE TABLE `timelines` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `timeline_path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `timelines`
+--
+
+INSERT INTO `timelines` (`id`, `user_id`, `title`, `description`, `timeline_path`, `created_at`, `updated_at`) VALUES
+(1, 3, 'Cronograma 1', 'lorem ipsum ipsum', 'files/timelines/timeline62d2c3b53fdc3.pdf', '2022-07-16 11:57:09', '2022-07-16 11:57:09');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -410,6 +434,13 @@ ALTER TABLE `supervisions`
   ADD KEY `supervisions_student_id_foreign` (`student_id`);
 
 --
+-- Indexes for table `timelines`
+--
+ALTER TABLE `timelines`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `timelines_user_id_foreign` (`user_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -448,7 +479,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -485,6 +516,12 @@ ALTER TABLE `students`
 --
 ALTER TABLE `supervisions`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `timelines`
+--
+ALTER TABLE `timelines`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -533,6 +570,12 @@ ALTER TABLE `students`
 ALTER TABLE `supervisions`
   ADD CONSTRAINT `supervisions_student_id_foreign` FOREIGN KEY (`student_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `supervisions_supervisor_id_foreign` FOREIGN KEY (`supervisor_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `timelines`
+--
+ALTER TABLE `timelines`
+  ADD CONSTRAINT `timelines_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
