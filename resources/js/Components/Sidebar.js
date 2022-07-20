@@ -17,7 +17,7 @@ import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { mainListItems, secondaryListItems } from './SideNav';
+import { MainListItems, SecondaryListItems } from './SideNav';
 import { usePage } from '@inertiajs/inertia-react';
 import { Avatar, Button, ListItemIcon, Menu, MenuItem } from '@mui/material';
 import { KeyboardArrowDown, Logout, Settings } from '@mui/icons-material';
@@ -178,9 +178,9 @@ export default function Sidebar({ children, header, auth }) {
                     </Toolbar>
                     <Divider />
                     <List component="nav">
-                        {mainListItems}
+                        <MainListItems auth={auth}/>
                         <Divider sx={{ my: 1 }} />
-                        {secondaryListItems}
+                        <SecondaryListItems auth={auth} />
                     </List>
                 </Drawer>
                 <Box
