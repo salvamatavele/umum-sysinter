@@ -34,7 +34,7 @@ class SupervisionsController extends Controller
         if (Supervision::create($supervision)) {
             return Redirect::back()->with('success', "O supervisor foi atribuido ao supervisando com sucesso");
         } else {
-            return Redirect::back()->with('success', "Desculpe nao foi possivel atribuir o supervisor. Tente novamente.");
+            return Redirect::back()->with('error', "Desculpe nao foi possivel atribuir o supervisor. Tente novamente.");
         }
     }
 
@@ -51,7 +51,7 @@ class SupervisionsController extends Controller
         if ($deleted) {
             return Redirect::back()->with('success', "A supervisao foi anulada com sucesso.");
         } else {
-            return Redirect::back()->with('success', "Desculpe nao foi possivel desalocar o supervisor. Tente novamente.");
+            return Redirect::back()->with('error', "Desculpe nao foi possivel desalocar o supervisor. Tente novamente.");
         }
     }
 }

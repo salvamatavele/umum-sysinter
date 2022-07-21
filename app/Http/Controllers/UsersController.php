@@ -50,7 +50,7 @@ class UsersController extends Controller
 
             return Redirect::route('users.index')->with('success', "O Usuario foi registado com sucesso.\n O codigo de acesso ao sistema e: 12345678");
         } else {
-            return Redirect::back()->with('success', "Desculpe nao foi possivel registar o usuario. Tente novamente.");
+            return Redirect::back()->with('error', "Desculpe nao foi possivel registar o usuario. Tente novamente.");
         }
     }
     public function show($id)
@@ -88,7 +88,7 @@ class UsersController extends Controller
 
             return Redirect::route('users.index')->with('success', "O Usuario foi actualizado com sucesso.");
         } else {
-            return Redirect::back()->with('success', "Desculpe nao foi possivel actualizar o usuario. Tente novamente.");
+            return Redirect::back()->with('error', "Desculpe nao foi possivel actualizar o usuario. Tente novamente.");
         }
     }
 
@@ -105,7 +105,7 @@ class UsersController extends Controller
         if ($deleted) {
             return Redirect::route('users.index')->with('success', "O usuario foi eliminado com sucesso.");
         } else {
-            return Redirect::back()->with('success', "Desculpe nao foi possivel eliminar o usuario. Tente novamente.");
+            return Redirect::back()->with('error', "Desculpe nao foi possivel eliminar o usuario. Tente novamente.");
         }
     }
 }

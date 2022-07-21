@@ -45,7 +45,7 @@ class CoursesController extends Controller
         if ($course) {
             return Redirect::route('courses.index')->with('success', "O curso foi registado com sucesso.");
         } else {
-            return Redirect::back()->with('success', "Desculpe nao foi possivel registar o curso. Tente novamente.");
+            return Redirect::back()->with('error', "Desculpe nao foi possivel registar o curso. Tente novamente.");
         }
     }
 
@@ -88,7 +88,7 @@ class CoursesController extends Controller
         if ($updated) {
             return Redirect::route('courses.index')->with('success', "O curso foi actualizado com sucesso.");
         } else {
-            return Redirect::back()->with('success', "Desculpe nao foi possivel actualizar o curso. Tente novamente.");
+            return Redirect::back()->with('error', "Desculpe nao foi possivel actualizar o curso. Tente novamente.");
         }
     }
 
@@ -105,7 +105,7 @@ class CoursesController extends Controller
         if ($deleted) {
             return Redirect::route('courses.index')->with('success', "O curso foi eliminado com sucesso.");
         } else {
-            return Redirect::back()->with('success', "Desculpe nao foi possivel eliminar o curso. Tente novamente.");
+            return Redirect::back()->with('error', "Desculpe nao foi possivel eliminar o curso. Tente novamente.");
         }
     }
 }

@@ -145,7 +145,7 @@ export default function Sidebar({ children, header, auth }) {
                                     'aria-labelledby': 'basic-button',
                                 }}
                             >
-                                <MenuItem>
+                                <MenuItem component='a' href={route('profile.show')}>
                                     <ListItemIcon>
                                         <Settings fontSize="small" />
                                     </ListItemIcon>

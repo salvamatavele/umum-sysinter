@@ -36,7 +36,7 @@ class SchedulesController extends Controller
         if ($schedule) {
             return Redirect::route('schedules.index')->with('success', "O Agenda foi criada com sucesso.");
         } else {
-            return Redirect::back()->with('success', "Desculpe nao foi possivel criar a agenda. Tente novamente.");
+            return Redirect::back()->with('error', "Desculpe nao foi possivel criar a agenda. Tente novamente.");
         }
     }
 
@@ -56,7 +56,7 @@ class SchedulesController extends Controller
         if ($schedule->update($scheduleData)) {
             return Redirect::route('schedules.index')->with('success', "O Agenda foi actualizada com sucesso.");
         } else {
-            return Redirect::back()->with('success', "Desculpe nao foi possivel actualizar a agenda. Tente novamente.");
+            return Redirect::back()->with('error', "Desculpe nao foi possivel actualizar a agenda. Tente novamente.");
         }
     }
 
