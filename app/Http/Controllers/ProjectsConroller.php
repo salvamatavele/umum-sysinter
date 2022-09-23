@@ -55,6 +55,7 @@ class ProjectsConroller extends Controller
         $project = $projectsRequest->file('project_path');
         $path = $project->move('files/projects', 'project' . uniqid() . '.' . trim($project->getClientOriginalExtension()));
         $projectData['project_path'] = $path;
+        
         $saved = Project::create($projectData);
         if ($saved) {
             return Redirect::back()->with('success', 'A monografia foi enviada com sucesso.');
